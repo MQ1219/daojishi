@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>倒计时10分钟</title>
+</head>
+<style>
+	.time,span{
+		font-size: 32px;
+
+	}
+</style>
+<body>
+	<div class="time">倒计时10分钟</div>
+	<span>0</span>分
+	<span>0</span>秒
+</body>
+</html>
+<script>
+	let spans = document.querySelectorAll('span');
+	let date = new Date();
+	date.setMinutes(date.getMinutes() + 10);
+		
+	setInterval(move,1000);
+	move()	
+	function move(){
+		let now = new Date();
+		let arr = []	
+		let time = Math.floor((date.getTime()-now.getTime())/1000);		
+		let m = Math.floor(time/60);
+		arr.push(m)
+		let s = Math.floor(time%60);
+		arr.push(s)
+		spans.forEach((ele,index)=>{
+			ele.innerText = arr[index];
+		})
+	}
+	
+
+</script>
